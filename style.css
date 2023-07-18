@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gotham:wght@400;700&display=swap');
 
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Gotham', sans-serif;
 }
 
 h1 {
@@ -21,7 +21,7 @@ textarea {
   height: 80px;
   resize: none;
   margin-bottom: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Gotham', sans-serif;
 }
 
 button {
@@ -30,7 +30,7 @@ button {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Gotham', sans-serif;
 }
 
 .comment {
@@ -64,7 +64,7 @@ button {
   color: #909090;
   font-size: 12px;
   margin-left: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Gotham', sans-serif;
 }
 
 .comment-actions button:hover {
@@ -75,13 +75,20 @@ button {
   margin-right: 10px;
 }
 
+.reaction-buttons {
+  display: flex;
+  align-items: center;
+}
+
 .reaction-buttons button {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 20px;
-  margin-right: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin-right: 5px;
+  font-family: 'Gotham', sans-serif;
+  display: flex;
+  align-items: center;
 }
 
 .reaction-buttons button.active {
