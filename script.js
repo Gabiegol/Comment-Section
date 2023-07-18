@@ -2,11 +2,13 @@
 const commentForm = document.getElementById('commentForm'); // Get the comment form element
 const commentInput = document.getElementById('commentInput'); // Get the comment input element
 const commentList = document.getElementById('commentList'); // Get the comment list element
+const sortLatestButton = document.getElementById('sortLatest'); // Get the "Sort by Latest" button element
+const sortEarliestButton = document.getElementById('sortEarliest'); // Get the "Sort by Earliest" button element
 const reactionButtons = document.querySelectorAll('.reaction-buttons button'); // Get all the reaction buttons
 
 // Initialize variables
 let comments = []; // Array to store comments
-let sortBy = 'latest'; // Variable to store the current sorting order
+let sortBy = 'latest'; // Variable to store the current sorting order of the comments
 let userReactions = {}; // Object to track user reactions to comments
 
 // Event listeners
@@ -23,6 +25,16 @@ commentInput.addEventListener('keydown', e => {
     e.preventDefault();
     addCommentHandler();
   }
+});
+
+// Event listener for "Sort by Latest" button
+sortLatestButton.addEventListener('click', () => {
+  sortCommentsByReverseTimestamp();
+});
+
+// Event listener for "Sort by Earliest" button
+sortEarliestButton.addEventListener('click', () => {
+  sortCommentsByTimestamp();
 });
 
 // Function to handle adding a new comment
@@ -127,52 +139,4 @@ function renderComments() {
     editButton.addEventListener('click', () => editComment(i));
 
     const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete';
-    deleteButton.addEventListener('click', () => deleteComment(i));
-
-    commentActions.appendChild(reactionButtons);
-    commentActions.appendChild(editButton);
-    commentActions.appendChild(deleteButton);
-
-    commentElement.appendChild(timestamp);
-    commentElement.appendChild(commentText);
-    commentElement.appendChild(commentActions);
-
-    commentList.appendChild(commentElement);
-  }
-
-  highlightSortButton(); // Highlight the active sort button
-}
-
-// Function to highlight the active sort button based on the current sorting order
-function highlightSortButton() {
-  sortButtons.forEach(button => {
-    button.classList.remove('active');
-    if (
-      (button.id === 'sortLatest' && sortBy === 'latest') ||
-      (button.id === 'sortEarliest' && sortBy === 'earliest')
-    ) {
-      button.classList.add('active');
-    }
-  });
-}
-
-// Function to get the corresponding emoji for a reaction type
-function getReactionEmoji(reaction) {
-  switch (reaction) {
-    case 'laughter':
-      return '😂';
-    case 'sad':
-      return '😢';
-    case 'anger':
-      return '😡';
-    case 'like':
-      return '👍';
-    case 'love':
-      return '❤️';
-    default:
-      return '';
-  }
-}
-
-renderComments(); // Initial rendering of comments on the page
+    deleteButton.textContent =
